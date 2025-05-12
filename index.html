@@ -46,6 +46,81 @@
                 </p>
             </div>
         </header>
+        <style>
+  .menu-toggle {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+  }
+
+  nav {
+    display: none;
+    flex-direction: column;
+    background: #f4f4f4;
+    padding: 10px;
+  }
+
+  nav a {
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+  }
+
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: block;
+    }
+
+    #menu.active {
+      display: flex;
+    }
+  }
+</style>
+
+<div class="menu-toggle" onclick="document.getElementById('menu').classList.toggle('active')">☰ Menu</div>
+<nav id="menu">
+  <a href="#">Home</a>
+  <a href="#">Chi sono</a>
+  <a href="#">Contatti</a>
+</nav>
+
+<style>
+  .menu-toggle {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+  }
+
+  nav {
+    display: none;
+    flex-direction: column;
+    background: #f4f4f4;
+    padding: 10px;
+  }
+
+  nav a {
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+  }
+
+  @media (max-width: 768px) {
+    .menu-toggle {
+      display: block;
+    }
+
+    #menu.active {
+      display: flex;
+    }
+  }
+</style>
+
+<div class="menu-toggle" onclick="document.getElementById('menu').classList.toggle('active')">☰ Menu</div>
+<nav id="menu">
+  <a href="#">Home</a>
+  <a href="#">Chi sono</a>
+  <a href="#">Contatti</a>
+</nav>
 
         <!-- Gallery -->
         <section class="mb-24 opacity-0 transition-opacity duration-500 opacity-100">
