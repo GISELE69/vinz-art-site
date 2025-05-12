@@ -251,65 +251,76 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
-        /* Animazioni */
-        .cookie-banner {
-            transition: all 0.5s ease;
-            transform: translateY(100%);
-        }
-        .cookie-banner.show {
-            transform: translateY(0);
-        }
-        .cookie-modal {
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-        .cookie-modal.show {
-            opacity: 1;
-            visibility: visible;
-        }
+    .cookie-banner {
+        display: none;
+    }
+    .cookie-banner.show {
+        display: block;
+    }
 
-        /* Toggle */
-        .cookie-toggle {
-            position: relative;
-            display: inline-block;
-            width: 50px;
-            height: 24px;
-        }
-        .cookie-toggle input {
-            opacity: 0;
-            width: 0;
-            height: 0;
-        }
-        .cookie-slider {
-            position: absolute;
-            cursor: pointer;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: #ccc;
-            transition: 0.4s;
-            border-radius: 24px;
-        }
-        .cookie-slider:before {
-            position: absolute;
-            content: "";
-            height: 16px;
-            width: 16px;
-            left: 4px;
-            bottom: 4px;
-            background-color: white;
-            transition: 0.4s;
-            border-radius: 50%;
-        }
-        input:checked + .cookie-slider {
-            background-color: #000;
-        }
-        input:checked + .cookie-slider:before {
-            transform: translateX(26px);
-        }
-    </style>
+    .cookie-modal {
+        display: none;
+    }
+    .cookie-modal.show {
+        display: flex;
+    }
+
+    .cookie-toggle {
+        position: relative;
+        display: inline-block;
+        width: 40px;
+        height: 22px;
+    }
+
+    .cookie-toggle input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+    .cookie-slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.4s;
+        border-radius: 34px;
+    }
+
+    .cookie-toggle input:checked + .cookie-slider {
+        background-color: #000;
+    }
+
+    .cookie-slider::before {
+        position: absolute;
+        content: "";
+        height: 16px;
+        width: 16px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+    }
+
+    .cookie-toggle input:checked + .cookie-slider::before {
+        transform: translateX(18px);
+    }
+
+    /* Forza scritta nera su sfondo bianco */
+    .cookie-banner,
+    .cookie-modal {
+        background-color: white !important;
+        color: black !important;
+    }
+
+    .cookie-modal a {
+        color: black;
+    }
+</style>
 </head>
 <body class="bg-white text-black">
 
