@@ -30,6 +30,34 @@
     .cookie-slider::before { position: absolute; content: ''; height: 16px; width: 16px; left: 3px; bottom: 3px; background: #fff; transition: .4s; border-radius: 50%; }
     .cookie-toggle input:checked + .cookie-slider { background: #000; }
     .cookie-toggle input:checked + .cookie-slider::before { transform: translateX(18px); }
+    /* Hamburger Menu */
+    .hamburger-menu {
+      display: none;
+    }
+    .hamburger-menu.open {
+      display: block;
+    }
+    .hamburger-menu ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+    .hamburger-menu li {
+      padding: 10px;
+    }
+    .hamburger-menu a {
+      color: #fff;
+      text-decoration: none;
+    }
+    /* Mobile View */
+    @media (max-width: 768px) {
+      .navbar {
+        display: none;
+      }
+      .hamburger-menu {
+        display: block;
+      }
+    }
   </style>
 </head>
 <body class="min-h-screen">
@@ -45,8 +73,29 @@
       </div>
     </header>
 
+    <!-- Navbar -->
+    <nav class="navbar flex justify-between items-center">
+      <ul class="flex space-x-8">
+        <li><a href="#gallery" class="hover:underline">Galleria</a></li>
+        <li><a href="#projects" class="hover:underline">Progetti</a></li>
+        <li><a href="#contacts" class="hover:underline">Contatti</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hamburger Menu -->
+    <div class="hamburger-menu">
+      <button id="hamburgerButton" class="text-white">
+        <i class="fa fa-bars"></i>
+      </button>
+      <ul id="hamburgerList" class="hidden">
+        <li><a href="#gallery" class="block py-2">Galleria</a></li>
+        <li><a href="#projects" class="block py-2">Progetti</a></li>
+        <li><a href="#contacts" class="block py-2">Contatti</a></li>
+      </ul>
+    </div>
+
     <!-- Gallery -->
-    <section class="mb-24 opacity-0 transition-opacity duration-500 opacity-100">
+    <section id="gallery" class="mb-24 opacity-0 transition-opacity duration-500 opacity-100">
       <h2 class="text-3xl text-center mb-12 font-light">OPERE</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <!-- images... -->
@@ -56,7 +105,7 @@
     <div class="section-divider"></div>
 
     <!-- Projects -->
-    <section class="mb-24 opacity-0 transition-opacity duration-500 opacity-100">
+    <section id="projects" class="mb-24 opacity-0 transition-opacity duration-500 opacity-100">
       <h2 class="text-3xl text-center mb-12 font-light">PROGETTI</h2>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- projects... -->
@@ -66,7 +115,7 @@
     <div class="section-divider"></div>
 
     <!-- Contacts -->
-    <section class="text-center opacity-0 transition-opacity duration-500 opacity-100">
+    <section id="contacts" class="text-center opacity-0 transition-opacity duration-500 opacity-100">
       <h2 class="text-3xl mb-12 font-light">CONTATTI</h2>
       <div class="max-w-md mx-auto space-y-4">
         <p class="text-lg">Per informazioni, collaborazioni o acquisti:</p>
@@ -123,12 +172,18 @@
       document.getElementById('cookiePreferencesBtn').onclick = () => { cookieModal.classList.add('show'); loadToggles(); };
       document.getElementById('cookieModalClose').onclick = () => cookieModal.classList.remove('show');
       document.getElementById('cookieSavePreferences').onclick = () => { saveToggles(); setConsent('custom'); };
+      // Hamburger menu toggle
+      document.getElementById('hamburgerButton').onclick = () => {
+        const menu = document.getElementById('hamburgerList');
+        menu.classList.toggle('hidden');
+      };
     });
+
     function setCookie(n,v,d){let x=new Date();x.setTime(x.getTime()+d*86400000);document.cookie=`${n}=${v};expires=${x.toUTCString()};path=/`;}
     function getCookie(n){return document.cookie.split('; ').find(r=>r.startsWith(n+'='))?.split('=')[1];}
     function setConsent(l){setCookie('cookie_consent',l,365);setCookie('cookie_performance',l==='all'?'true':document.getElementById('performanceCookies').checked+'',365);setCookie('cookie_functional',l==='all'?'true':document.getElementById('functionalCookies').checked+'',365);setCookie('cookie_targeting',l==='all'?'true':document.getElementById('targetingCookies').checked+'',365);cookieModal.classList.remove('show');cookieBanner.classList.remove('show');}
     function loadToggles(){document.getElementById('performanceCookies').checked=getCookie('cookie_performance')==='true';document.getElementById('functionalCookies').checked=getCookie('cookie_functional')==='true';document.getElementById('targetingCookies').checked=getCookie('cookie_targeting')==='true';}
-    function saveToggles(){setCookie('cookie_performance',document.getElementById('performanceCookies').checked,365);setCookie('cookie_functional',document.getElementById('functionalCookies').checked,365);setCookie('cookie_targeting',document.getElementById('targetingCookies').checked,365);}
-  </script>
+    function saveToggles(){setCookie('cookie_performance',document.getElementById('performanceCookies').checked,365);setCookie('cookie_functional',document.getElementById('functionalCookies').checked,365);set
+</script>
 </body>
 </html>
