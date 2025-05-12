@@ -1,5 +1,101 @@
 <!DOCTYPE html>
-<!-- saved from url=(0014)about:internet -->
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VINZSITE</title>VINZ
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+    <style>
+      /* Personalizzazioni del banner dei cookie */
+      .cookie-banner {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #f8f9fa;
+        padding: 16px;
+        border-top: 2px solid #ccc;
+        display: none;
+        z-index: 9999;
+        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .cookie-banner.show {
+        display: block;
+      }
+      .cookie-modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 10000;
+        justify-content: center;
+        align-items: center;
+      }
+      .cookie-modal.show {
+        display: flex;
+      }
+      .cookie-modal-content {
+        background-color: white;
+        padding: 20px;
+        max-width: 500px;
+        margin: 20px;
+        border-radius: 8px;
+      }
+      .cookie-toggle {
+        position: relative;
+        display: inline-block;
+        width: 34px;
+        height: 20px;
+      }
+      .cookie-toggle input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      .cookie-slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.4s;
+        border-radius: 50px;
+      }
+      .cookie-slider:before {
+        position: absolute;
+        content: "";
+        height: 12px;
+        width: 12px;
+        border-radius: 50%;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: 0.4s;
+      }
+      input:checked + .cookie-slider {
+        background-color: #4caf50;
+      }
+      input:checked + .cookie-slider:before {
+        transform: translateX(14px);
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-100 text-gray-900 font-roboto">
+    <div class="container mx-auto px-4 py-12 max-w-6xl">
+      <!-- Header, Gallery, Projects, Contacts, Footer ... -->
+      <!-- [<!DOCTYPE html>
+<-- saved from url=(0014)about:internet -->
 <html lang="it"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -205,5 +301,121 @@
             });
         });
     </script>
+    </div>
 
-</body></html>
+    <!-- Inserisci qui il banner e la modale -->
+    <div id="cookieBanner" class="cookie-banner">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+        <div>
+          <h3 class="text-lg font-semibold flex items-center gap-2">
+            <i class="fas fa-cookie-bite"></i>
+            <span>🍪 🍰 🍩 🧁</span>
+            Rispettiamo la tua privacy
+          </h3>
+          <p class="text-sm mt-1">
+            Utilizziamo cookie per migliorare la tua esperienza di navigazione... puoi gestire le preferenze.
+          </p>
+        </div>
+        <div class="flex gap-2">
+          <button id="cookiePreferencesBtn" class="px-4 py-2 border border-black rounded">Preferenze</button>
+          <button id="cookieRejectBtn" class="px-4 py-2 border border-black rounded">Rifiuta tutto</button>
+          <button id="cookieAcceptBtn" class="px-4 py-2 bg-black text-white rounded">Accetta tutto</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modale per le preferenze dei cookie -->
+    <div id="cookieModal" class="cookie-modal">
+      <div class="cookie-modal-content">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-xl font-bold flex items-center gap-2">
+            <i class="fas fa-cog"></i> Preferenze sui cookie
+          </h3>
+          <button id="cookieModalClose"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="space-y-4">
+          <!-- Cookie toggles -->
+          <div class="flex justify-between items-center p-3 bg-gray-100 rounded">
+            <div><h4>Cookie necessari</h4><p class="text-sm">Essenziali, non disattivabili.</p></div>
+            <div class="cookie-toggle"><input type="checkbox" checked disabled><span class="cookie-slider"></span></div>
+          </div>
+          <div class="flex justify-between items-center p-3 bg-gray-100 rounded">
+            <div><h4>Cookie prestazionali</h4><p class="text-sm">Statistiche visitatori.</p></div>
+            <div class="cookie-toggle"><input type="checkbox" id="performanceCookies"><span class="cookie-slider"></span></div>
+          </div>
+          <div class="flex justify-between items-center p-3 bg-gray-100 rounded">
+            <div><h4>Cookie funzionali</h4><p class="text-sm">Funzionalità avanzate.</p></div>
+            <div class="cookie-toggle"><input type="checkbox" id="functionalCookies"><span class="cookie-slider"></span></div>
+          </div>
+          <div class="flex justify-between items-center p-3 bg-gray-100 rounded">
+            <div><h4>Cookie di targeting</h4><p class="text-sm">Profilazione interessi.</p></div>
+            <div class="cookie-toggle"><input type="checkbox" id="targetingCookies"><span class="cookie-slider"></span></div>
+          </div>
+        </div>
+        <div class="mt-6 text-right">
+          <button id="cookieSavePreferences" class="px-4 py-2 bg-black text-white rounded">Salva preferenze</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const cookieBanner = document.getElementById('cookieBanner');
+      const cookieModal = document.getElementById('cookieModal');
+      const cookieAcceptBtn = document.getElementById('cookieAcceptBtn');
+      const cookieRejectBtn = document.getElementById('cookieRejectBtn');
+      const cookiePreferencesBtn = document.getElementById('cookiePreferencesBtn');
+      const cookieModalClose = document.getElementById('cookieModalClose');
+      const cookieSavePreferences = document.getElementById('cookieSavePreferences');
+      const performanceCookies = document.getElementById('performanceCookies');
+      const functionalCookies = document.getElementById('functionalCookies');
+      const targetingCookies = document.getElementById('targetingCookies');
+
+      document.addEventListener('DOMContentLoaded', () => {
+        if (!getCookie('cookie_consent')) setTimeout(() => cookieBanner.classList.add('show'), 500);
+        cookieAcceptBtn.onclick = () => setConsent('all');
+        cookieRejectBtn.onclick = () => setConsent('necessary');
+        cookiePreferencesBtn.onclick = () => {
+          cookieModal.classList.add('show');
+          loadToggles();
+        };
+        cookieModalClose.onclick = () => cookieModal.classList.remove('show');
+        cookieSavePreferences.onclick = () => {
+          saveToggles();
+          setConsent('custom');
+        };
+      });
+
+      function setCookie(name, value, days) {
+        const d = new Date();
+        d.setTime(d.getTime() + days * 86400000);
+        document.cookie = `${name}=${value};expires=${d.toUTCString()};path=/`;
+      }
+
+      function getCookie(name) {
+        return document.cookie.split('; ').find(r => r.startsWith(name + '='))?.split('=')[1];
+      }
+
+      function setConsent(level) {
+        setCookie('cookie_consent', level, 365);
+        setCookie('cookie_performance', level === 'all' ? 'true' : performanceCookies.checked + '', 365);
+        setCookie('cookie_functional', level === 'all' ? 'true' : functionalCookies.checked + '', 365);
+        setCookie('cookie_targeting', level === 'all' ? 'true' : targetingCookies.checked + '', 365);
+        cookieModal.classList.remove('show');
+        cookieBanner.classList.remove('show');
+      }
+
+      function loadToggles() {
+        performanceCookies.checked = getCookie('cookie_performance') === 'true';
+        functionalCookies.checked = getCookie('cookie_functional') === 'true';
+        targetingCookies.checked = getCookie('cookie_targeting') === 'true';
+      }
+
+      function saveToggles() {
+        setCookie('cookie_performance', performanceCookies.checked, 365);
+        setCookie('cookie_functional', functionalCookies.checked, 365);
+        setCookie('cookie_targeting', targetingCookies.checked, 365);
+      }
+    </script>
+  </body>
+</html>
+
