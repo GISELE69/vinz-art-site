@@ -91,14 +91,6 @@
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      if (!getCookie('cookie_consent')) setTimeout(() => cookieBanner.classList.add('show'), 500);
-      cookieAcceptBtn.onclick = () => { setConsent('all'); };
-      cookieRejectBtn.onclick = () => { setConsent('necessary'); };
-      cookiePreferencesBtn.onclick = () => { cookieModal.classList.add('show'); loadToggles(); };
-      cookieModalClose.onclick = () => cookieModal.classList.remove('show');
-      cookieSavePreferences.onclick = () => { saveToggles(); setConsent('custom'); };
-    });
     const cookieBanner = document.getElementById('cookieBanner');
     const cookieModal = document.getElementById('cookieModal');
     const cookieAcceptBtn = document.getElementById('cookieAcceptBtn');
@@ -106,11 +98,55 @@
     const cookiePreferencesBtn = document.getElementById('cookiePreferencesBtn');
     const cookieModalClose = document.getElementById('cookieModalClose');
     const cookieSavePreferences = document.getElementById('cookieSavePreferences');
-    function setCookie(name, value, days) { let d=new Date(); d.setTime(d.getTime()+days*864e5); document.cookie=`${name}=${value};expires=${d.toUTCString()};path=/`;}
-    function getCookie(name) { return document.cookie.split('; ').find(r=>r.startsWith(name+'='))?.split('=')[1]; }
-    function setConsent(level){ setCookie('cookie_consent', level,365); setCookie('cookie_performance', level==='all'? 'true': (performanceCookies.checked+'') ,365); setCookie('cookie_functional', level==='all'? 'true': (functionalCookies.checked+''),365); setCookie('cookie_targeting', level==='all'? 'true': (targetingCookies.checked+''),365); cookieModal.classList.remove('show'); cookieBanner.classList.remove('show'); }
-    function loadToggles(){ performanceCookies.checked = getCookie('cookie_performance')==='true'; functionalCookies.checked = getCookie('cookie_functional')==='true'; targetingCookies.checked = getCookie('cookie_targeting')==='true'; }
-    function saveToggles(){ setCookie('cookie_performance', performanceCookies.checked,365); setCookie('cookie_functional', functionalCookies.checked,365); setCookie('cookie_targeting', targetingCookies.checked,365); }
+    const performanceCookies = document.getElementById('performanceCookies');
+    const functionalCookies = document.getElementById('functionalCookies');
+    const targetingCookies = document.getElementById('targetingCookies');
+
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!getCookie('cookie_consent')) setTimeout(() => cookieBanner.classList.add('show'), 500);
+      cookieAcceptBtn.onclick = () => setConsent('all');
+      cookieRejectBtn.onclick = () => setConsent('necessary');
+      cookiePreferencesBtn.onclick = () => {
+        cookieModal.classList.add('show');
+        loadToggles();
+      };
+      cookieModalClose.onclick = () => cookieModal.classList.remove('show');
+      cookieSavePreferences.onclick = () => {
+        saveToggles();
+        setConsent('custom');
+      };
+    });
+
+    function setCookie(name, value, days) {
+      const d = new Date();
+      d.setTime(d.getTime() + days * 86400000);
+      document.cookie = `${name}=${value};expires=${d.toUTCString()};path=/`;
+    }
+
+    function getCookie(name) {
+      return document.cookie.split('; ').find(r => r.startsWith(name + '='))?.split('=')[1];
+    }
+
+    function setConsent(level) {
+      setCookie('cookie_consent', level, 365);
+      setCookie('cookie_performance', level === 'all' ? 'true' : performanceCookies.checked + '', 365);
+      setCookie('cookie_functional', level === 'all' ? 'true' : functionalCookies.checked + '', 365);
+      setCookie('cookie_targeting', level === 'all' ? 'true' : targetingCookies.checked + '', 365);
+      cookieModal.classList.remove('show');
+      cookieBanner.classList.remove('show');
+    }
+
+    function loadToggles() {
+      performanceCookies.checked = getCookie('cookie_performance') === 'true';
+      functionalCookies.checked = getCookie('cookie_functional') === 'true';
+      targetingCookies.checked = getCookie('cookie_targeting') === 'true';
+    }
+
+    function saveToggles() {
+      setCookie('cookie_performance', performanceCookies.checked, 365);
+      setCookie('cookie_functional', functionalCookies.checked, 365);
+      setCookie('cookie_targeting', targetingCookies.checked, 365);
+    }
   </script>
 </body>
 </html>
