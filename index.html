@@ -10,7 +10,7 @@
     <style>
         body {
             font-family: 'Cormorant Garamond', serif;
-            background-color: #000;
+            background-color: #000; 
             color: #fff;
         }
         .painting {
@@ -42,7 +42,7 @@
             <!-- Bio -->
             <div class="max-w-2xl mx-auto">
                 <p class="text-lg leading-relaxed">
-                    Vincenzo Bancheri, in arte VINZ, è un pittore contemporaneo che esplora il sentimento nella pittura attraverso il silenzio, il colore e la solitudine. La sua ricerca artistica riflette il bisogno di autenticità nell'epoca digitale.
+                    Vincenzo Bancheri, in arte VINZ, è un pittore contemporaneo che esplora il sentimento nella pittura attraverso il silenzio, il colore e la solitudine. La sua ricerca artistica principalmente riflette il bisogno di autenticità nell'epoca digitale e l'autenticità del sentimento nelle opere d'arte contemporanee.
                 </p>
             </div>
         </header>
@@ -118,7 +118,7 @@
 <div class="menu-toggle" onclick="document.getElementById('menu').classList.toggle('active')">☰ Menu</div>
 <nav id="menu">
   <a href="#">Home</a>
-  <a href="#">Chi sono</a>
+  <a href="#">Chi è VINZ</a>
   <a href="#">Contatti</a>
 </nav>
 
@@ -250,7 +250,7 @@
                 </div>
                 
                 <p class="text-sm opacity-60 mt-8">
-                    Studio visitabile su appuntamento a Milano
+                    Studio visitabile con appuntamento presso Delia, in provincia di Caltanissetta.
                 </p>
             </div>
         </section>
@@ -281,5 +281,306 @@
             });
         });
     </script>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Banner per la gestione dei cookie – versione 2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        /* Animazioni */
+        .cookie-banner {
+            transition: all 0.5s ease;
+            transform: translateY(100%);
+        }
+        .cookie-banner.show {
+            transform: translateY(0);
+        }
+        .cookie-modal {
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .cookie-modal.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Toggle */
+        .cookie-toggle {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+        .cookie-toggle input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .cookie-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 24px;
+        }
+        .cookie-slider:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+        input:checked + .cookie-slider {
+            background-color: #000;
+        }
+        input:checked + .cookie-slider:before {
+            transform: translateX(26px);
+        }
+    </style>
+</head>
+<body class="bg-white text-black">
+    <!-- Contenuto del sito -->
+    <div class="min-h-screen p-8">
+        <h1 class="text-3xl font-bold text-center">Contenuto del tuo sito web</h1>
+        <p class="text-center mt-4">Qui apparirà il contenuto principale del tuo sito.</p>
+    </div>
+
+    <!-- Banner per il consenso ai cookie -->
+    <div id="cookieBanner" class="cookie-banner fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-gray-200 p-4 z-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div class="flex-1">
+                    <h3 class="text-lg font-semibold flex items-center gap-2">
+                        <i class="fas fa-cookie-bite"></i>
+                        <span>🍰 🍩 🧁</span>
+                        Rispettiamo la tua privacy
+                    </h3>
+                    <p class="text-sm mt-1">
+                        Utilizziamo cookie per migliorare la tua esperienza di navigazione, fornire contenuti personalizzati e analizzare il nostro traffico. Cliccando "Accetta tutto" acconsenti all'uso di tutti i cookie. Puoi gestire le tue preferenze qui sotto.
+                    </p>
+                </div>
+                <div class="flex flex-col sm:flex-row gap-2">
+                    <button id="cookiePreferencesBtn" class="px-4 py-2 border border-black rounded-md text-sm font-medium hover:bg-gray-100 transition-colors">
+                        Preferenze
+                    </button>
+                    <button id="cookieRejectBtn" class="px-4 py-2 border border-black rounded-md text-sm font-medium hover:bg-gray-100 transition-colors">
+                        Rifiuta tutto
+                    </button>
+                    <button id="cookieAcceptBtn" class="px-4 py-2 bg-black rounded-md text-sm font-medium text-white hover:bg-gray-900 transition-colors">
+                        Accetta tutto
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modale per le preferenze dei cookie -->
+    <div id="cookieModal" class="cookie-modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+        <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto text-black">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-bold flex items-center gap-2">
+                        <i class="fas fa-cog"></i>
+                        Preferenze sui cookie
+                    </h3>
+                    <button id="cookieModalClose" class="hover:text-gray-600">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <!-- Testo introduttivo -->
+                <div class="border-b border-gray-200 pb-4">
+                    <p class="mb-4">
+                        Utilizziamo i cookie per garantirti la migliore esperienza sul nostro sito web. Puoi regolare le tue preferenze qui sotto. Per maggiori informazioni, leggi la nostra <a href="#" class="underline">Informativa sui cookie</a>.
+                    </p>
+                </div>
+
+                <!-- Sezioni cookie -->
+                <div class="space-y-4 mt-6">
+                    <!-- Cookie necessari -->
+                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                        <div>
+                            <h4 class="font-medium">Cookie necessari</h4>
+                            <p class="text-sm mt-1">Questi cookie sono essenziali per il funzionamento del sito e non possono essere disattivati.</p>
+                        </div>
+                        <div class="cookie-toggle">
+                            <input type="checkbox" id="necessaryCookies" checked disabled />
+                            <span class="cookie-slider"></span>
+                        </div>
+                    </div>
+
+                    <!-- Cookie prestazionali -->
+                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                        <div>
+                            <h4 class="font-medium">Cookie prestazionali</h4>
+                            <p class="text-sm mt-1">Questi cookie ci permettono di contare le visite e le fonti di traffico per misurare e migliorare le prestazioni del nostro sito.</p>
+                        </div>
+                        <div class="cookie-toggle">
+                            <input type="checkbox" id="performanceCookies" checked />
+                            <span class="cookie-slider"></span>
+                        </div>
+                    </div>
+
+                    <!-- Cookie funzionali -->
+                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                        <div>
+                            <h4 class="font-medium">Cookie funzionali</h4>
+                            <p class="text-sm mt-1">Questi cookie permettono al sito di fornire funzionalità avanzate e personalizzazione.</p>
+                        </div>
+                        <div class="cookie-toggle">
+                            <input type="checkbox" id="functionalCookies" checked />
+                            <span class="cookie-slider"></span>
+                        </div>
+                    </div>
+
+                    <!-- Cookie di targeting -->
+                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                        <div>
+                            <h4 class="font-medium">Cookie di targeting</h4>
+                            <p class="text-sm mt-1">Questi cookie possono essere impostati dal nostro sito dai nostri partner pubblicitari per creare un profilo dei tuoi interessi.</p>
+                        </div>
+                        <div class="cookie-toggle">
+                            <input type="checkbox" id="targetingCookies" />
+                            <span class="cookie-slider"></span>
+                        </div>
+                    </div>
+
+                    <!-- Esempio di nuova tipologia da aggiungere -->
+                    <!--
+                    <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                        <div>
+                            <h4 class="font-medium">Cookie di analisi</h4>
+                            <p class="text-sm mt-1">Esempio di nuova tipologia da gestire tramite banner.</p>
+                        </div>
+                        <div class="cookie-toggle">
+                            <input type="checkbox" id="analyticsCookies" />
+                            <span class="cookie-slider"></span>
+                        </div>
+                    </div>
+                    -->
+                </div>
+
+                <!-- Pulsanti di salvataggio -->
+                <div class="flex flex-col sm:flex-row justify-end gap-3 pt-6">
+                    <button id="cookieSavePreferences" class="px-4 py-2 bg-black rounded-md text-sm font-medium text-white hover:bg-gray-900 transition-colors">
+                        Salva preferenze
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Mostra il banner se non è stato dato il consenso
+            if (!getCookie("cookie_consent")) {
+                setTimeout(() => {
+                    document.getElementById("cookieBanner").classList.add("show");
+                }, 500);
+            }
+
+            /* Banner */
+            document
+                .getElementById("cookieAcceptBtn")
+                .addEventListener("click", function () {
+                    setCookie("cookie_consent", "all", 365);
+                    setCookie("cookie_performance", "true", 365);
+                    setCookie("cookie_functional", "true", 365);
+                    setCookie("cookie_targeting", "true", 365);
+                    hideBanner();
+                });
+
+            document
+                .getElementById("cookieRejectBtn")
+                .addEventListener("click", function () {
+                    setCookie("cookie_consent", "necessary", 365);
+                    setCookie("cookie_performance", "false", 365);
+                    setCookie("cookie_functional", "false", 365);
+                    setCookie("cookie_targeting", "false", 365);
+                    hideBanner();
+                });
+
+            document
+                .getElementById("cookiePreferencesBtn")
+                .addEventListener("click", function () {
+                    document.getElementById("cookieModal").classList.add("show");
+
+                    // Imposta lo stato dei toggle in base ai cookie salvati
+                    const performance = getCookie("cookie_performance") !== "false";
+                    const functional = getCookie("cookie_functional") !== "false";
+                    const targeting = getCookie("cookie_targeting") !== "false";
+
+                    document.getElementById("performanceCookies").checked = performance;
+                    document.getElementById("functionalCookies").checked = functional;
+                    document.getElementById("targetingCookies").checked = targeting;
+                });
+
+            /* Modale */
+            document
+                .getElementById("cookieModalClose")
+                .addEventListener("click", function () {
+                    document.getElementById("cookieModal").classList.remove("show");
+                });
+
+            document
+                .getElementById("cookieSavePreferences")
+                .addEventListener("click", function () {
+                    const performance = document.getElementById("performanceCookies").checked;
+                    const functional = document.getElementById("functionalCookies").checked;
+                    const targeting = document.getElementById("targetingCookies").checked;
+
+                    setCookie("cookie_consent", "custom", 365);
+                    setCookie("cookie_performance", performance.toString(), 365);
+                    setCookie("cookie_functional", functional.toString(), 365);
+                    setCookie("cookie_targeting", targeting.toString(), 365);
+
+                    document.getElementById("cookieModal").classList.remove("show");
+                    hideBanner();
+                });
+
+            /* Utils */
+            function hideBanner() {
+                document.getElementById("cookieBanner").classList.remove("show");
+                setTimeout(() => {
+                    document.getElementById("cookieBanner").style.display = "none";
+                }, 500);
+            }
+
+            function setCookie(name, value, days) {
+                let expires = "";
+                if (days) {
+                    const date = new Date();
+                    date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+                    expires = "; expires=" + date.toUTCString();
+                }
+                document.cookie = `${name}=${value || ""}${expires}; path=/; SameSite=Lax`;
+            }
+
+            function getCookie(name) {
+                const nameEQ = name + "=";
+                const ca = document.cookie.split(";");
+                for (let i = 0; i < ca.length; i++) {
+                    let c = ca[i];
+                    while (c.charAt(0) === " ") c = c.substring(1, c.length);
+                    if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+                }
+                return null;
+            }
+        });
+    </script>
+</body>
+</html>
 
 </body></html>
