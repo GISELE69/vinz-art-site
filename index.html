@@ -129,23 +129,23 @@
 
     function setConsent(level) {
       setCookie('cookie_consent', level, 365);
-      setCookie('cookie_performance', level === 'all' ? 'true' : performanceCookies.checked + '', 365);
-      setCookie('cookie_functional', level === 'all' ? 'true' : functionalCookies.checked + '', 365);
-      setCookie('cookie_targeting', level === 'all' ? 'true' : targetingCookies.checked + '', 365);
+      setCookie('cookie_performance', level === 'all' ? 'true' : performanceCookies?.checked + '', 365);
+      setCookie('cookie_functional', level === 'all' ? 'true' : functionalCookies?.checked + '', 365);
+      setCookie('cookie_targeting', level === 'all' ? 'true' : targetingCookies?.checked + '', 365);
       cookieModal.classList.remove('show');
       cookieBanner.classList.remove('show');
     }
 
     function loadToggles() {
-      performanceCookies.checked = getCookie('cookie_performance') === 'true';
-      functionalCookies.checked = getCookie('cookie_functional') === 'true';
-      targetingCookies.checked = getCookie('cookie_targeting') === 'true';
+      if (performanceCookies) performanceCookies.checked = getCookie('cookie_performance') === 'true';
+      if (functionalCookies) functionalCookies.checked = getCookie('cookie_functional') === 'true';
+      if (targetingCookies) targetingCookies.checked = getCookie('cookie_targeting') === 'true';
     }
 
     function saveToggles() {
-      setCookie('cookie_performance', performanceCookies.checked, 365);
-      setCookie('cookie_functional', functionalCookies.checked, 365);
-      setCookie('cookie_targeting', targetingCookies.checked, 365);
+      setCookie('cookie_performance', performanceCookies?.checked, 365);
+      setCookie('cookie_functional', functionalCookies?.checked, 365);
+      setCookie('cookie_targeting', targetingCookies?.checked, 365);
     }
   </script>
 </body>
