@@ -1,421 +1,134 @@
 <!DOCTYPE html>
 <html lang="it">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VINZSITE</title>VINZ
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-    <style>
-      /* Personalizzazioni del banner dei cookie */
-      .cookie-banner {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        background-color: #f8f9fa;
-        padding: 16px;
-        border-top: 2px solid #ccc;
-        display: none;
-        z-index: 9999;
-        box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-      }
-      .cookie-banner.show {
-        display: block;
-      }
-      .cookie-modal {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 10000;
-        justify-content: center;
-        align-items: center;
-      }
-      .cookie-modal.show {
-        display: flex;
-      }
-      .cookie-modal-content {
-        background-color: white;
-        padding: 20px;
-        max-width: 500px;
-        margin: 20px;
-        border-radius: 8px;
-      }
-      .cookie-toggle {
-        position: relative;
-        display: inline-block;
-        width: 34px;
-        height: 20px;
-      }
-      .cookie-toggle input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-      }
-      .cookie-slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #ccc;
-        transition: 0.4s;
-        border-radius: 50px;
-      }
-      .cookie-slider:before {
-        position: absolute;
-        content: "";
-        height: 12px;
-        width: 12px;
-        border-radius: 50%;
-        left: 4px;
-        bottom: 4px;
-        background-color: white;
-        transition: 0.4s;
-      }
-      input:checked + .cookie-slider {
-        background-color: #4caf50;
-      }
-      input:checked + .cookie-slider:before {
-        transform: translateX(14px);
-      }
-    </style>
-  </head>
-
-  <body class="bg-gray-100 text-gray-900 font-roboto">
-    <div class="container mx-auto px-4 py-12 max-w-6xl">
-      <!-- Header, Gallery, Projects, Contacts, Footer ... -->
-      <!-- [<!DOCTYPE html>
-<-- saved from url=(0014)about:internet -->
-<html lang="it"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VINZ - Pittore Contemporaneo</title>
-    <script src="https://cdn.tailwindcss.com/"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&amp;display=swap">
-    <style>
-        body {
-            font-family: 'Cormorant Garamond', serif;
-            background-color: #000;
-            color: #fff;
-        }
-        .painting {
-            transition: all 0.3s ease;
-        }
-        .painting:hover {
-            transform: scale(1.02);
-        }
-        .painting-title {
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .painting:hover .painting-title {
-            opacity: 1;
-        }
-        .section-divider {
-            border-top: 1px solid rgba(255,255,255,0.1);
-            margin: 5rem 0;
-        }
-    </style>
-<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.16 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.container{width:100%}@media (min-width: 640px){.container{max-width:640px}}@media (min-width: 768px){.container{max-width:768px}}@media (min-width: 1024px){.container{max-width:1024px}}@media (min-width: 1280px){.container{max-width:1280px}}@media (min-width: 1536px){.container{max-width:1536px}}.mx-auto{margin-left:auto;margin-right:auto}.mb-12{margin-bottom:3rem}.mb-16{margin-bottom:4rem}.mb-2{margin-bottom:0.5rem}.mb-24{margin-bottom:6rem}.mb-4{margin-bottom:1rem}.mb-3{margin-bottom:0.75rem}.mt-24{margin-top:6rem}.mt-8{margin-top:2rem}.inline-block{display:inline-block}.flex{display:flex}.grid{display:grid}.h-64{height:16rem}.h-40{height:10rem}.min-h-screen{min-height:100vh}.w-full{width:100%}.max-w-2xl{max-width:42rem}.max-w-6xl{max-width:72rem}.max-w-md{max-width:28rem}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.items-center{align-items:center}.justify-center{justify-content:center}.gap-8{gap:2rem}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-white{--tw-border-opacity:1;border-color:rgb(255 255 255 / var(--tw-border-opacity, 1))}.border-opacity-20{--tw-border-opacity:0.2}.border-opacity-40{--tw-border-opacity:0.4}.bg-gray-900{--tw-bg-opacity:1;background-color:rgb(17 24 39 / var(--tw-bg-opacity, 1))}.object-cover{object-fit:cover}.p-6{padding:1.5rem}.px-4{padding-left:1rem;padding-right:1rem}.py-12{padding-top:3rem;padding-bottom:3rem}.text-center{text-align:center}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-5xl{font-size:3rem;line-height:1}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.font-light{font-weight:300}.italic{font-style:italic}.leading-relaxed{line-height:1.625}.tracking-tight{letter-spacing:-0.025em}.opacity-50{opacity:0.5}.opacity-60{opacity:0.6}.opacity-80{opacity:0.8}.opacity-0{opacity:0}.opacity-100{opacity:1}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-opacity{transition-property:opacity;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-500{transition-duration:500ms}.hover\:border-opacity-80:hover{--tw-border-opacity:0.8}@media (min-width: 768px){.md\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.md\:text-2xl{font-size:1.5rem;line-height:2rem}.md\:text-7xl{font-size:4.5rem;line-height:1}}@media (min-width: 1024px){.lg\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}}</style></head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VINZ - Pittore Contemporaneo</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&display=swap" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Cormorant Garamond', serif;
+      background-color: #000;
+      color: #fff;
+    }
+    .painting { transition: all 0.3s ease; }
+    .painting:hover { transform: scale(1.02); }
+    .painting-title { opacity: 0; transition: opacity 0.3s ease; }
+    .painting:hover .painting-title { opacity: 1; }
+    .section-divider { border-top: 1px solid rgba(255,255,255,0.1); margin: 5rem 0; }
+    /* Banner e Modale Cookie */
+    .cookie-banner { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: #fff; color: #000; border-top: 1px solid #ccc; padding: 1rem; z-index: 10000; }
+    .cookie-banner.show { display: block; }
+    .cookie-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 10001; }
+    .cookie-modal.show { display: flex; }
+    .cookie-modal-content { background: #fff; color: #000; border-radius: .5rem; max-width: 28rem; width: 90%; max-height: 90vh; overflow-y: auto; padding: 1.5rem; }
+    .cookie-toggle { position: relative; display: inline-block; width: 40px; height: 22px; }
+    .cookie-toggle input { opacity: 0; width: 0; height: 0; }
+    .cookie-slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background: #ccc; transition: .4s; border-radius: 34px; }
+    .cookie-slider::before { position: absolute; content: ''; height: 16px; width: 16px; left: 3px; bottom: 3px; background: #fff; transition: .4s; border-radius: 50%; }
+    .cookie-toggle input:checked + .cookie-slider { background: #000; }
+    .cookie-toggle input:checked + .cookie-slider::before { transform: translateX(18px); }
+  </style>
+</head>
 <body class="min-h-screen">
-    <div class="container mx-auto px-4 py-12 max-w-6xl">
-        <!-- Header -->
-        <header class="text-center mb-16">
-            <h1 class="text-5xl md:text-7xl font-light mb-4 tracking-tight">VINZ</h1>
-            <p class="text-xl md:text-2xl italic mb-12">"ARTE PER ME E PER L'ARTE STESSA"</p>
-            
-            <!-- Bio -->
-            <div class="max-w-2xl mx-auto">
-                <p class="text-lg leading-relaxed">
-                    Vincenzo Bancheri, in arte VINZ, è un pittore contemporaneo che esplora il sentimento nella pittura attraverso il silenzio, il colore e la solitudine. La sua ricerca artistica riflette il bisogno di autenticità nell'epoca digitale.
-                </p>
-            </div>
-        </header>
+  <div class="container mx-auto px-4 py-12 max-w-6xl">
+    <!-- Header -->
+    <header class="text-center mb-16">
+      <h1 class="text-5xl md:text-7xl font-light mb-4 tracking-tight">VINZ</h1>
+      <p class="text-xl md:text-2xl italic mb-12">"ARTE PER ME E PER L'ARTE STESSA"</p>
+      <div class="max-w-2xl mx-auto">
+        <p class="text-lg leading-relaxed">
+          Vincenzo Bancheri, in arte VINZ, è un pittore contemporaneo che esplora il sentimento nella pittura attraverso il silenzio, il colore e la solitudine.
+        </p>
+      </div>
+    </header>
 
-        <!-- Gallery -->
-        <section class="mb-24 opacity-0 transition-opacity duration-500 opacity-100">
-            <h2 class="text-3xl text-center mb-12 font-light">OPERE</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Painting 1 -->
-                <div class="painting group">
-                    <div class="overflow-hidden mb-2">
-                        <img src="https://images.unsplash.com/photo-1579783902614-a3fb39268b5b?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="Il silenzio delle cose" class="w-full h-64 object-cover">
-                    </div>
-                    <div class="painting-title text-center">
-                        <h3 class="text-xl">Il silenzio delle cose</h3>
-                        <p class="text-sm italic">Olio su tela, 2023</p>
-                    </div>
-                </div>
-                
-                <!-- Painting 2 -->
-                <div class="painting group">
-                    <div class="overflow-hidden mb-2">
-                        <img src="https://images.unsplash.com/photo-1579888944880-9832bd3a86c3?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="Solitudine urbana" class="w-full h-64 object-cover">
-                    </div>
-                    <div class="painting-title text-center">
-                        <h3 class="text-xl">Solitudine urbana</h3>
-                        <p class="text-sm italic">Acrilico e collage, 2022</p>
-                    </div>
-                </div>
-                
-                <!-- Painting 3 -->
-                <div class="painting group">
-                    <div class="overflow-hidden mb-2">
-                        <img src="https://images.unsplash.com/photo-1579547945413-497e1b99dac0?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="L&#39;abisso del colore" class="w-full h-64 object-cover">
-                    </div>
-                    <div class="painting-title text-center">
-                        <h3 class="text-xl">L'abisso del colore</h3>
-                        <p class="text-sm italic">Tecnica mista, 2023</p>
-                    </div>
-                </div>
-                
-                <!-- Painting 4 -->
-                <div class="painting group">
-                    <div class="overflow-hidden mb-2">
-                        <img src="https://images.unsplash.com/photo-1579783900882-0b64465d11f4?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="Memoria di un gesto" class="w-full h-64 object-cover">
-                    </div>
-                    <div class="painting-title text-center">
-                        <h3 class="text-xl">Memoria di un gesto</h3>
-                        <p class="text-sm italic">Olio su tela, 2021</p>
-                    </div>
-                </div>
-                
-                <!-- Painting 5 -->
-                <div class="painting group">
-                    <div class="overflow-hidden mb-2">
-                        <img src="https://images.unsplash.com/photo-1578307987926-75098f8f6d1e?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="Luce nell&#39;ombra" class="w-full h-64 object-cover">
-                    </div>
-                    <div class="painting-title text-center">
-                        <h3 class="text-xl">Luce nell'ombra</h3>
-                        <p class="text-sm italic">Acquerello e inchiostro, 2022</p>
-                    </div>
-                </div>
-                
-                <!-- Painting 6 -->
-                <div class="painting group">
-                    <div class="overflow-hidden mb-2">
-                        <img src="https://images.unsplash.com/photo-1579783901586-df0fba0686d5?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80" alt="Il peso del vuoto" class="w-full h-64 object-cover">
-                    </div>
-                    <div class="painting-title text-center">
-                        <h3 class="text-xl">Il peso del vuoto</h3>
-                        <p class="text-sm italic">Olio e sabbia su tela, 2023</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <!-- Gallery -->
+    <section class="mb-24 opacity-0 transition-opacity duration-500 opacity-100">
+      <h2 class="text-3xl text-center mb-12 font-light">OPERE</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- images... -->
+      </div>
+    </section>
 
-        <div class="section-divider"></div>
+    <div class="section-divider"></div>
 
-        <!-- Projects -->
-        <section class="mb-24 opacity-0 transition-opacity duration-500 opacity-100">
-            <h2 class="text-3xl text-center mb-12 font-light">PROGETTI</h2>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Project 1 -->
-                <div class="border border-white border-opacity-20 p-6">
-                    <h3 class="text-xl mb-3">La serie del silenzio</h3>
-                    <p class="text-sm opacity-80 mb-4">Una ricerca sul vuoto come spazio pieno di possibilità</p>
-                    <div class="h-40 bg-gray-900 flex items-center justify-center">
-                        <span class="text-sm italic opacity-60">In progress</span>
-                    </div>
-                </div>
-                
-                <!-- Project 2 -->
-                <div class="border border-white border-opacity-20 p-6">
-                    <h3 class="text-xl mb-3">Digitale analogico</h3>
-                    <p class="text-sm opacity-80 mb-4">L'interazione tra pittura tradizionale e glitch digitali</p>
-                    <div class="h-40 bg-gray-900 flex items-center justify-center">
-                        <span class="text-sm italic opacity-60">In progress</span>
-                    </div>
-                </div>
-                
-                <!-- Project 3 -->
-                <div class="border border-white border-opacity-20 p-6">
-                    <h3 class="text-xl mb-3">Archivio emotivo</h3>
-                    <p class="text-sm opacity-80 mb-4">Mappatura cromatica degli stati d'animo</p>
-                    <div class="h-40 bg-gray-900 flex items-center justify-center">
-                        <span class="text-sm italic opacity-60">In progress</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <!-- Projects -->
+    <section class="mb-24 opacity-0 transition-opacity duration-500 opacity-100">
+      <h2 class="text-3xl text-center mb-12 font-light">PROGETTI</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- projects... -->
+      </div>
+    </section>
 
-        <div class="section-divider"></div>
+    <div class="section-divider"></div>
 
-        <!-- Contacts -->
-        <section class="text-center opacity-0 transition-opacity duration-500 opacity-100">
-            <h2 class="text-3xl mb-12 font-light">CONTATTI</h2>
-            
-            <div class="max-w-md mx-auto space-y-4">
-                <p class="text-lg">
-                    Per informazioni, collaborazioni o acquisti:
-                </p>
-                
-                <div class="border border-white border-opacity-20 p-6">
-                    <p class="mb-4">vincenzo.oznecinv02@gmail.com</p>
-                    <a href="https://www.instagram.com/v1nzar7?igsh=OTFkcmpvM3EwYjM4" target="_blank" class="inline-block border-b border-white border-opacity-40 hover:border-opacity-80 transition">
-                        @v1nzar7
-                    </a>
-                </div>
-                
-                <p class="text-sm opacity-60 mt-8">
-                    Studio visitabile su appuntamento a Milano
-                </p>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="mt-24 text-center text-sm opacity-50">
-            <p>© 2023 VINZ. Tutti i diritti riservati.</p>
-        </footer>
-    </div>
-
-    <script>
-        // Simple script to fade in elements as they come into view
-        document.addEventListener('DOMContentLoaded', function() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('opacity-100');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.1
-            });
-
-            document.querySelectorAll('section').forEach(section => {
-                section.classList.add('opacity-0', 'transition-opacity', 'duration-500');
-                observer.observe(section);
-            });
-        });
-    </script>
-    </div>
-
-    <!-- Inserisci qui il banner e la modale -->
-    <div id="cookieBanner" class="cookie-banner">
-      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <div>
-          <h3 class="text-lg font-semibold flex items-center gap-2">
-            <i class="fas fa-cookie-bite"></i>
-            <span>🍪 🍰 🍩 🧁</span>
-            Rispettiamo la tua privacy
-          </h3>
-          <p class="text-sm mt-1">
-            Utilizziamo cookie per migliorare la tua esperienza di navigazione... puoi gestire le preferenze.
-          </p>
+    <!-- Contacts -->
+    <section class="text-center opacity-0 transition-opacity duration-500 opacity-100">
+      <h2 class="text-3xl mb-12 font-light">CONTATTI</h2>
+      <div class="max-w-md mx-auto space-y-4">
+        <p class="text-lg">Per informazioni, collaborazioni o acquisti:</p>
+        <div class="border border-white border-opacity-20 p-6">
+          <p class="mb-4">vincenzo.oznecinv02@gmail.com</p>
+          <a href="#" class="inline-block border-b border-white border-opacity-40 hover:border-opacity-80 transition">@v1nzar7</a>
         </div>
-        <div class="flex gap-2">
-          <button id="cookiePreferencesBtn" class="px-4 py-2 border border-black rounded">Preferenze</button>
-          <button id="cookieRejectBtn" class="px-4 py-2 border border-black rounded">Rifiuta tutto</button>
-          <button id="cookieAcceptBtn" class="px-4 py-2 bg-black text-white rounded">Accetta tutto</button>
-        </div>
+        <p class="text-sm opacity-60 mt-8">Studio visitabile su appuntamento a Milano</p>
+      </div>
+    </section>
+
+    <footer class="mt-24 text-center text-sm opacity-50">© 2025 VINZ. Tutti i diritti riservati.</footer>
+  </div>
+
+  <!-- Banner per il consenso ai cookie -->
+  <div id="cookieBanner" class="cookie-banner">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <div>
+        <h3 class="text-lg font-semibold flex items-center gap-2"><i class="fas fa-cookie-bite"></i><span>🍪 🍰 🍩 🧁</span> Rispettiamo la tua privacy</h3>
+        <p class="text-sm mt-1">Utilizziamo cookie per migliorare la tua esperienza... puoi gestire le preferenze.</p>
+      </div>
+      <div class="flex gap-2">
+        <button id="cookiePreferencesBtn" class="px-4 py-2 border border-black rounded">Preferenze</button>
+        <button id="cookieRejectBtn" class="px-4 py-2 border border-black rounded">Rifiuta tutto</button>
+        <button id="cookieAcceptBtn" class="px-4 py-2 bg-black text-white rounded">Accetta tutto</button>
       </div>
     </div>
+  </div>
 
-    <!-- Modale per le preferenze dei cookie -->
-    <div id="cookieModal" class="cookie-modal">
-      <div class="cookie-modal-content">
-        <div class="flex justify-between items-center mb-4">
-          <h3 class="text-xl font-bold flex items-center gap-2">
-            <i class="fas fa-cog"></i> Preferenze sui cookie
-          </h3>
-          <button id="cookieModalClose"><i class="fas fa-times"></i></button>
-        </div>
-        <div class="space-y-4">
-          <!-- Cookie toggles -->
-          <div class="flex justify-between items-center p-3 bg-gray-100 rounded">
-            <div><h4>Cookie necessari</h4><p class="text-sm">Essenziali, non disattivabili.</p></div>
-            <div class="cookie-toggle"><input type="checkbox" checked disabled><span class="cookie-slider"></span></div>
-          </div>
-          <div class="flex justify-between items-center p-3 bg-gray-100 rounded">
-            <div><h4>Cookie prestazionali</h4><p class="text-sm">Statistiche visitatori.</p></div>
-            <div class="cookie-toggle"><input type="checkbox" id="performanceCookies"><span class="cookie-slider"></span></div>
-          </div>
-          <div class="flex justify-between items-center p-3 bg-gray-100 rounded">
-            <div><h4>Cookie funzionali</h4><p class="text-sm">Funzionalità avanzate.</p></div>
-            <div class="cookie-toggle"><input type="checkbox" id="functionalCookies"><span class="cookie-slider"></span></div>
-          </div>
-          <div class="flex justify-between items-center p-3 bg-gray-100 rounded">
-            <div><h4>Cookie di targeting</h4><p class="text-sm">Profilazione interessi.</p></div>
-            <div class="cookie-toggle"><input type="checkbox" id="targetingCookies"><span class="cookie-slider"></span></div>
-          </div>
-        </div>
-        <div class="mt-6 text-right">
-          <button id="cookieSavePreferences" class="px-4 py-2 bg-black text-white rounded">Salva preferenze</button>
-        </div>
+  <!-- Modale per preferenze -->
+  <div id="cookieModal" class="cookie-modal">
+    <div class="cookie-modal-content">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-bold flex items-center gap-2"><i class="fas fa-cog"></i> Preferenze sui cookie</h3>
+        <button id="cookieModalClose"><i class="fas fa-times"></i></button>
       </div>
+      <div class="space-y-4">
+        <div class="flex justify-between items-center p-3 bg-gray-100 rounded"><div><h4>Cookie necessari</h4><p class="text-sm">Essenziali</p></div><div class="cookie-toggle"><input type="checkbox" checked disabled><span class="cookie-slider"></span></div></div>
+        <div class="flex justify-between items-center p-3 bg-gray-100 rounded"><div><h4>Cookie prestazionali</h4><p class="text-sm">Statistiche</p></div><div class="cookie-toggle"><input type="checkbox" id="performanceCookies"><span class="cookie-slider"></span></div></div>
+        <div class="flex justify-between items-center p-3 bg-gray-100 rounded"><div><h4>Cookie funzionali</h4><p class="text-sm">Funzionalità</p></div><div class="cookie-toggle"><input type="checkbox" id="functionalCookies"><span class="cookie-slider"></span></div></div>
+        <div class="flex justify-between items-center p-3 bg-gray-100 rounded"><div><h4>Cookie di targeting</h4><p class="text-sm">Profilazione</p></div><div class="cookie-toggle"><input type="checkbox" id="targetingCookies"><span class="cookie-slider"></span></div></div>
+      </div>
+      <div class="mt-6 text-right"><button id="cookieSavePreferences" class="px-4 py-2 bg-black text-white rounded">Salva preferenze</button></div>
     </div>
+  </div>
 
-    <script>
-      const cookieBanner = document.getElementById('cookieBanner');
-      const cookieModal = document.getElementById('cookieModal');
-      const cookieAcceptBtn = document.getElementById('cookieAcceptBtn');
-      const cookieRejectBtn = document.getElementById('cookieRejectBtn');
-      const cookiePreferencesBtn = document.getElementById('cookiePreferencesBtn');
-      const cookieModalClose = document.getElementById('cookieModalClose');
-      const cookieSavePreferences = document.getElementById('cookieSavePreferences');
-      const performanceCookies = document.getElementById('performanceCookies');
-      const functionalCookies = document.getElementById('functionalCookies');
-      const targetingCookies = document.getElementById('targetingCookies');
-
-      document.addEventListener('DOMContentLoaded', () => {
-        if (!getCookie('cookie_consent')) setTimeout(() => cookieBanner.classList.add('show'), 500);
-        cookieAcceptBtn.onclick = () => setConsent('all');
-        cookieRejectBtn.onclick = () => setConsent('necessary');
-        cookiePreferencesBtn.onclick = () => {
-          cookieModal.classList.add('show');
-          loadToggles();
-        };
-        cookieModalClose.onclick = () => cookieModal.classList.remove('show');
-        cookieSavePreferences.onclick = () => {
-          saveToggles();
-          setConsent('custom');
-        };
-      });
-
-      function setCookie(name, value, days) {
-        const d = new Date();
-        d.setTime(d.getTime() + days * 86400000);
-        document.cookie = `${name}=${value};expires=${d.toUTCString()};path=/`;
-      }
-
-      function getCookie(name) {
-        return document.cookie.split('; ').find(r => r.startsWith(name + '='))?.split('=')[1];
-      }
-
-      function setConsent(level) {
-        setCookie('cookie_consent', level, 365);
-        setCookie('cookie_performance', level === 'all' ? 'true' : performanceCookies.checked + '', 365);
-        setCookie('cookie_functional', level === 'all' ? 'true' : functionalCookies.checked + '', 365);
-        setCookie('cookie_targeting', level === 'all' ? 'true' : targetingCookies.checked + '', 365);
-        cookieModal.classList.remove('show');
-        cookieBanner.classList.remove('show');
-      }
-
-      function loadToggles() {
-        performanceCookies.checked = getCookie('cookie_performance') === 'true';
-        functionalCookies.checked = getCookie('cookie_functional') === 'true';
-        targetingCookies.checked = getCookie('cookie_targeting') === 'true';
-      }
-
-      function saveToggles() {
-        setCookie('cookie_performance', performanceCookies.checked, 365);
-        setCookie('cookie_functional', functionalCookies.checked, 365);
-        setCookie('cookie_targeting', targetingCookies.checked, 365);
-      }
-    </script>
-  </body>
+  <script>
+    const cookieBanner = document.getElementById('cookieBanner');
+    const cookieModal = document.getElementById('cookieModal');
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!getCookie('cookie_consent')) setTimeout(() => cookieBanner.classList.add('show'), 500);
+      document.getElementById('cookieAcceptBtn').onclick = () => setConsent('all');
+      document.getElementById('cookieRejectBtn').onclick = () => setConsent('necessary');
+      document.getElementById('cookiePreferencesBtn').onclick = () => { cookieModal.classList.add('show'); loadToggles(); };
+      document.getElementById('cookieModalClose').onclick = () => cookieModal.classList.remove('show');
+      document.getElementById('cookieSavePreferences').onclick = () => { saveToggles(); setConsent('custom'); };
+    });
+    function setCookie(n,v,d){let x=new Date();x.setTime(x.getTime()+d*86400000);document.cookie=`${n}=${v};expires=${x.toUTCString()};path=/`;}
+    function getCookie(n){return document.cookie.split('; ').find(r=>r.startsWith(n+'='))?.split('=')[1];}
+    function setConsent(l){setCookie('cookie_consent',l,365);setCookie('cookie_performance',l==='all'?'true':document.getElementById('performanceCookies').checked+'',365);setCookie('cookie_functional',l==='all'?'true':document.getElementById('functionalCookies').checked+'',365);setCookie('cookie_targeting',l==='all'?'true':document.getElementById('targetingCookies').checked+'',365);cookieModal.classList.remove('show');cookieBanner.classList.remove('show');}
+    function loadToggles(){document.getElementById('performanceCookies').checked=getCookie('cookie_performance')==='true';document.getElementById('functionalCookies').checked=getCookie('cookie_functional')==='true';document.getElementById('targetingCookies').checked=getCookie('cookie_targeting')==='true';}
+    function saveToggles(){setCookie('cookie_performance',document.getElementById('performanceCookies').checked,365);setCookie('cookie_functional',document.getElementById('functionalCookies').checked,365);setCookie('cookie_targeting',document.getElementById('targetingCookies').checked,365);}
+  </script>
+</body>
 </html>
-
