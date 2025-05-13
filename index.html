@@ -48,27 +48,27 @@
     </header>
 
     <!-- Menu Hamburger per dispositivi mobili -->
-    <nav class="flex justify-between items-center">
-      <div class="text-white text-3xl">
-        <button id="menuToggle" class="lg:hidden">
-          <i class="fas fa-bars"></i>
-        </button>
-      </div>
-      <div class="lg:flex space-x-6 hidden">
-        <a href="#" class="text-white">Home</a>
-        <a href="#gallery" class="text-white">Opere</a>
-        <a href="#projects" class="text-white">Progetti</a>
-        <a href="#contacts" class="text-white">Contatti</a>
-      </div>
-    </nav>
+<nav class="flex justify-between items-center">
+  <div class="text-white text-3xl">
+    <button id="menuToggle" class="lg:hidden">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+  <div class="lg:flex space-x-6 hidden">
+    <a href="#home" class="text-white">Home</a>
+    <a href="#gallery" class="text-white">Opere</a>
+    <a href="#projects" class="text-white">Progetti</a>
+    <a href="#contacts" class="text-white">Contatti</a>
+  </div>
+</nav>
 
-    <!-- Mobile Menu -->
-    <div id="mobileMenu" class="mobile-menu bg-black">
-      <div class="menu-item"><a href="#">Home</a></div>
-      <div class="menu-item"><a href="#gallery">Opere</a></div>
-      <div class="menu-item"><a href="#projects">Progetti</a></div>
-      <div class="menu-item"><a href="#contacts">Contatti</a></div>
-    </div>
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="mobile-menu bg-black">
+  <div class="menu-item"><a href="#home">Home</a></div>
+  <div class="menu-item"><a href="#gallery">Opere</a></div>
+  <div class="menu-item"><a href="#projects">Progetti</a></div>
+  <div class="menu-item"><a href="#contacts">Contatti</a></div>
+</div>
 
     <!-- Gallery -->
     <section class="mb-24 opacity-0 transition-opacity duration-500 opacity-100">
@@ -99,10 +99,28 @@
           <p class="mb-4">vincenzo.oznecinv02@gmail.com</p>
           <a href="#" class="inline-block border-b border-white border-opacity-40 hover:border-opacity-80 transition">@v1nzar7</a>
         </div>
-        <p class="text-sm opacity-60 mt-8">Studio visitabile su appuntamento a Milano</p>
+        <p class="text-sm opacity-60 mt-8">Studio visitabile su appuntamento a Delia, provincia di Caltanissetta.</p>
       </div>
     </section>
+<section id="home" class="py-10 px-4">
+  <h2 class="text-2xl text-white">Benvenuto nel sito</h2>
+  <p class="text-white">Questa è la sezione Home.</p>
+</section>
 
+<section id="gallery" class="py-10 px-4">
+  <h2 class="text-2xl text-white">Galleria Opere</h2>
+  <p class="text-white">Qui verranno mostrate le opere dell'artista.</p>
+</section>
+
+<section id="projects" class="py-10 px-4">
+  <h2 class="text-2xl text-white">Progetti</h2>
+  <p class="text-white">Progetti in corso e futuri.</p>
+</section>
+
+<section id="contacts" class="py-10 px-4">
+  <h2 class="text-2xl text-white">Contatti</h2>
+  <p class="text-white">Qui puoi contattare l'artista.</p>
+</section>
     <footer class="mt-24 text-center text-sm opacity-50">© 2025 VINZ. Tutti i diritti riservati.</footer>
   </div>
 
@@ -138,13 +156,20 @@
     </div>
   </div>
 
-  <script>
-    const menuToggle = document.getElementById('menuToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
+<script>
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
 
-    menuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('active');
+  menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('active');
+  });
+
+  // Chiude il menu dopo il click su una voce
+  document.querySelectorAll('#mobileMenu a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
     });
-  </script>
+  });
+</script>
 </body>
 </html>
